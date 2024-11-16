@@ -1,0 +1,35 @@
+oSNAKE (oh-snake) (also short for orange-snake) 
+Is a free and open source coding language designed for data holding and requests, so oSNAKE is best used for holding large amounts of data that needs to be stored, oSNAKE can quickly and effortlessly gather/request or output all that data with the use of basic math and simple scripting.
+
+Simple Syntax
+------------
+What does a simple line of code look like on oSNAKE? let me give you an example.
+func{testfunc} DATA[x=1] if DATA[x=1] then print (test) (it can be a file or string.)
+
+output:
+"Test"
+
+To save data to a directory
+------------------------------
+DATA[x=2] if DATA[x==2] then print("saving data..") if DATA[x==2] then dir=/path/to/directory output=data.txt then DATA[x=3] if DATA[x==3] then print("successfully saved data to {directory}!") # Printing to a file print("This will be saved to a file") > /path/to/directory/output.txt
+
+Remember this for easy advanced outputs:
+print Function: If the print function contains a >, it will print the text to the specified file instead of the console.
+
+Dynamic Filepaths: Users can specify their own filepaths dynamically.
+
+Try running this interpreter and script. This setup allows printing directly to files, enhancing the functionality of the osnake interpreter / runtime.
+
+
+The oSNAKE interpreter / runtime;
+
+The core of oSNAKE scripts, oSNAKE scripts will search for the runtime (in the directory, so please put a oSNAKE runtime / interpreter in the directory where oSNAKE scripts are or they may not function the best, the interpreter / runtime is what the scripts NEED to run. without the runtime the scripts will fail to run and they just wont do anything. which is not good if you've been making large scripts that would be effectively useless without the runtime.
+
+Can i install the runtime directly to my system?
+------------------------------------------------
+As of the 16/11/24 we are still working on Windows / Linux packages that install oSNAKE into your system, so you dont have to manually put in the runtimes into your directories you just need it installed on your system.
+
+Where can i install these oSNAKE packages?
+-------------------------------------------
+We will make a website probably on GitHub pages where you can download the oSNAKE package from the site. but that is when the packages actually get released, for now the oSNAKE website will only be for installing the interpreter / runtime executable. 
+
