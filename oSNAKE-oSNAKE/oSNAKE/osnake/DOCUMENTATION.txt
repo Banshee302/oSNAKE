@@ -1,0 +1,358 @@
+[NOTE: This documentation will grow throughout the development of OSNAKE, expect it to be big.]
+[If you insall the libs it will have a huge startup, this cant be disabled.]
+oSNAKE (oh-snake) (also short for orange-snake) 
+Is a free and open source coding language designed for data holding and requests, so oSNAKE is best used for holding large amounts of data that needs to be stored, oSNAKE can quickly and effortlessly gather/request or output all that data with the use of basic math and simple scripting.
+
+Simple Syntax
+------------
+What does a simple line of code look like on oSNAKE? let me give you an example.
+func{testfunc} DATA[x=1] if DATA[x=1] then print (test) (it can be a file or string.)
+
+output:
+"Test"
+
+To save data to a directory
+------------------------------
+DATA[x=2] if DATA[x==2] then print("saving data..") if DATA[x==2] then dir=/path/to/directory output=data.txt then DATA[x=3] if DATA[x==3] then print("successfully saved data to {directory}!") # Printing to a file print("This will be saved to a file") > /path/to/directory/output.txt
+
+Remember this for easy advanced outputs:
+print Function: If the print function contains a >, it will print the text to the specified file instead of the console.
+
+Dynamic Filepaths: Users can specify their own filepaths dynamically.
+
+Try running this interpreter and script. This setup allows printing directly to files, enhancing the functionality of the osnake interpreter / runtime.
+
+
+The oSNAKE interpreter / runtime;
+
+The core of oSNAKE scripts, oSNAKE scripts will search for the runtime (in the directory, so please put a oSNAKE runtime / interpreter in the directory where oSNAKE scripts are or they may not function the best, the interpreter / runtime is what the scripts NEED to run. without the runtime the scripts will fail to run and they just wont do anything. which is not good if you've been making large scripts that would be effectively useless without the runtime.
+
+FixMe
+--------
+FixMe is the default debugger for oSNAKE Runtime, it automatically debugs scripts, to enter the FixMe Shell
+type in 'fixme' in the runtime, which will open fixme - where you can type fixme --debug (script) to debug it.
+
+FixMe can be edited by editing its functionality in 'osnake.py', the core of the osnake interpreter.
+
+You must install source code to get 'osnake.py'. 
+
+data token
+----------
+By putting 'data' in a line of code in your script it will make a variable with the stored data, like this:
+data my_variable = 42
+print(my_variable)
+
+Call
+---------
+'Call' when put into a script will call a certain library (e.g 'call python3-pip'), these can be good for
+making scripts run certain stuff using libs.
+
+Cobra Package Manager
+----------------------
+Cobra is the default package manager for oSNAKE runtime, just run cobra from the oSNAKE folder using python and you can install packages with CPM.
+
+Debugging
+-----------
+o-SNAKE requires a runtime to run .osnake scripts, if you do not have a runtime to run these scripts they wont run.
+
+If the runtime will not run you are most likely holding corrupt / broken packages required by the runtime.
+If cobra pkg manager (CPM) is not working as expected please update your pip, as CPM is based on the pip package manager by Python.
+
+SSH 
+----------
+O-SNAKE comes with SSH built in for sending data to servers and receiving data, here is a basic syntax for scripts;
+module.ssh connect example.com myuser mypassword -- This command connects to the server example.com using the username myuser and the password mypassword. [THIS IS AN EXAMPLE, PLEASE EDIT TO FIT YOUR CODE.]
+
+module.ssh command 'ls -la' -- This command runs the ls -la command on the remote server, listing all files and directories in the current directory with detailed information.
+
+module.ssh disconnect -- This command disconnects the current SSH session, ensuring that the connection is properly closed.
+
+Here's a complete example of an OSnake script using the module.ssh syntax:
+module.ssh connect example.com myuser mypassword
+module.ssh command 'ls -la'
+module.ssh
+What this does:
+Connects to the server example.com using the provided username and password.
+
+Executes the ls -la command to list the directory contents.
+
+Disconnects the SSH session.disconnect
+
+oSNAKE extended library features:
+(IF A SCRIPT HAS THESE LIBRARIES IN THEM AND THE SCRIPT IS RUN THE RUNTIME WILL INSTALL THE PACKAGES ON THE TIME THE SCRIPT RUNS.)
+# Connect to a website and fetch data
+module.http get 'https://api.example.com/data'
+
+# Plot a line chart
+module.plot line [1, 2, 3, 4] [10, 20, 25, 30]
+
+# Create a NumPy array
+module.math array [1, 2, 3, 4, 5]
+
+# Read a CSV file into a Pandas DataFrame
+module.dataframe read_csv 'data.csv'
+
+# Scrape a webpage
+module.web scrape 'https://example.com'
+
+# Connect to an SQLite database
+module.database connect 'example.db'
+
+# Train a machine learning model using Scikit-Learn
+module.ml train model 'data.csv'
+
+Socket Support and Cryptography
+-------------------------------
+oSNAKE has added a few libraries as of v2.
+Included Libraries:
+requests: For making HTTP requests.
+
+matplotlib: For creating charts and plots.
+
+numpy: For numerical operations.
+
+pandas: For data manipulation.
+
+beautifulsoup4: For web scraping.
+
+sqlite3: For embedded SQL databases.
+
+scikit-learn: For machine learning.
+
+cryptography: For cryptographic operations.
+
+flask: For building web applications.
+
+opencv-python: For computer vision.
+
+beautifultable: For creating ASCII tables.
+
+socket: For network communication.
+
+
+OSnake Data Modules Documentation
+----------------------------------
+The OSnake interpreter now supports additional powerful features through various modules. This documentation provides an overview of these features and their usage in OSnake scripts.
+
+Modules and Commands
+1. module.http
+Allows making HTTP requests to interact with APIs and web services.
+
+Commands:
+module.http get <url>
+
+Performs a GET request to the specified URL and prints the response.
+
+Example:
+osnake
+module.http get 'https://api.example.com/data'
+2. module.plot
+Enables data visualization by creating charts and plots using Matplotlib.
+
+Commands:
+module.plot line <x_values> <y_values>
+
+Creates and displays a line plot with the given x and y values.
+
+Example:
+osnake
+module.plot line [1, 2, 3, 4] [10, 20, 25, 30]
+3. module.math
+Provides support for numerical operations and handling arrays using NumPy.
+
+Commands:
+module.math array <array_values>
+
+Creates a NumPy array with the specified values and prints it.
+
+Example:
+osnake
+module.math array [1, 2, 3, 4, 5]
+4. module.dataframe
+Useful for data manipulation and analysis using Pandas.
+
+Commands:
+module.dataframe read_csv <file_path>
+
+Reads a CSV file into a Pandas DataFrame and prints it.
+
+Example:
+osnake
+module.dataframe read_csv 'data.csv'
+5. module.web
+Facilitates web scraping by parsing HTML documents using BeautifulSoup.
+
+Commands:
+module.web scrape <url>
+
+Fetches the HTML content of the specified URL and prints it.
+
+Example:
+osnake
+module.web scrape 'https://example.com'
+6. module.database
+Provides support for interacting with SQLite databases.
+
+Commands:
+module.database connect <db_path>
+
+Connects to the specified SQLite database and lists the tables in it.
+
+Example:
+osnake
+module.database connect 'example.db'
+7. module.ml
+Offers machine learning capabilities using Scikit-Learn.
+
+Commands:
+module.ml train <file_path>
+
+Trains a machine learning model using data from the specified CSV file.
+
+Example:
+osnake
+module.ml train 'data.csv'
+8. module.crypto
+Provides cryptographic operations for secure data handling using the Cryptography library.
+
+Commands:
+module.crypto encrypt <data> <password>
+
+Encrypts the specified data with the given password and prints the encrypted text.
+
+module.crypto decrypt <encrypted_data> <password>
+
+Decrypts the specified encrypted data with the given password and prints the decrypted text.
+
+Example:
+osnake
+module.crypto encrypt 'secret data' 'password'
+module.crypto decrypt 'encrypted data' 'password'
+9. module.webapp
+Enables the creation of web applications using Flask.
+
+Commands:
+module.webapp start_server <port>
+
+Starts a Flask web server on the specified port.
+
+Example:
+osnake
+module.webapp start_server 5000
+10. module.cv
+Provides computer vision capabilities for image processing using OpenCV.
+
+Commands:
+module.cv detect_faces <file_path>
+
+Detects faces in the specified image file and displays the image with rectangles around detected faces.
+
+Example:
+osnake
+module.cv detect_faces 'image.jpg'
+11. module.table
+Allows creating visually appealing ASCII tables using BeautifulTable.
+
+Commands:
+module.table create <header> <rows>
+
+Creates a table with the specified header and rows and prints it.
+
+Example:
+osnake
+module.table create ['Name', 'Age'] [['Alice', 30], ['Bob', 25]]
+12. module.network
+Enables network communication for building client-server applications using sockets.
+
+Commands:
+module.network create_server <host> <port>
+
+Creates a server socket that listens on the specified host and port.
+
+Example:
+osnake
+module.network create_server 'localhost' 8080
+Usage Example
+Here’s an example of an OSnake script utilizing multiple modules:
+
+osnake
+# Fetch data from a website
+module.http get 'https://api.example.com/data'
+
+# Plot a line chart
+module.plot line [1, 2, 3, 4] [10, 20, 25, 30]
+
+# Create a NumPy array
+module.math array [1, 2, 3, 4, 5]
+
+# Read a CSV file into a Pandas DataFrame
+module.dataframe read_csv 'data.csv'
+
+# Scrape a webpage
+module.web scrape 'https://example.com'
+
+# Connect to an SQLite database
+module.database connect 'example.db'
+
+# Train a machine learning model
+module.ml train 'data.csv'
+
+# Encrypt and decrypt data
+module.crypto encrypt 'secret data' 'password'
+module.crypto decrypt 'encrypted data' 'password'
+
+# Start a Flask web server
+module.webapp start_server 5000
+
+# Detect faces in an image
+module.cv detect_faces 'image.jpg'
+
+# Create an ASCII table
+module.table create ['Name', 'Age'] [['Alice', 30], ['Bob', 25]]
+
+# Create a server socket
+module.network create_server 'localhost' 8080
+
+Example of .osnake scripts using libraries
+--------------------------------------------
+# Fetch data from a website
+module.http get 'https://api.example.com/data'
+
+# Plot a line chart
+module.plot line [1, 2, 3, 4] [10, 20, 25, 30]
+
+# Create a NumPy array
+module.math array [1, 2, 3, 4, 5]
+
+# Read a CSV file into a Pandas DataFrame
+module.dataframe read_csv 'data.csv'
+
+# Scrape a webpage
+module.web scrape 'https://example.com'
+
+# Connect to an SQLite database
+module.database connect 'example.db'
+
+# Train a machine learning model
+module.ml train 'data.csv'
+
+# Encrypt and decrypt data
+module.crypto encrypt 'secret data' 'password'
+module.crypto decrypt 'encrypted data' 'password'
+
+# Start a Flask web server
+module.webapp start_server 5000
+
+# Detect faces in an image
+module.cv detect_faces 'image.jpg'
+
+# Create an ASCII table
+module.table create ['Name', 'Age'] [['Alice', 30], ['Bob', 25]]
+
+# Create a server socket
+module.network create_server 'localhost' 8080
+
+Most common errors;
+Pip or Python errors -- update or install Python packages.
+Downloading Libraries on startup -- You just dont have the libs, let it download.
+Wont Launch -- Copy the error message and send to the GitHub.
