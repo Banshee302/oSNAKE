@@ -1,13 +1,7 @@
-oSNAKE Programming Language
+# oSNAKE Programming Language
 
-What is oSNAKE used for?
+You must install JRE (Java runtime Enviroment) first to be able to use oSNAKE, heres the dependency links:
+Java JRE:
+https://www.java.com/en/download/
 
-oSNAKE is a Programming Language built for Data Management and it is very flexible, with some features being;
-1) Send Data to your servers using .osnake scripts.
-2) Receive Data from servers
-3) Store data locally with optional dumps.
-
-oSNAKE comes with SSH preinstalled upon startup
-
-OSNAKE DOES HAVE A VERY BIG STARTUP AS IT IS CHECKING FOR INSTALLED LIBRARIES.
-The documentation is big because we add onto it for each release.
+Please credit the oSNAKE programming language if your using it if you can, just a text file saying made in oSNAKE is good enough.
