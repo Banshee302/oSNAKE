@@ -3,27 +3,27 @@ import java.util.*;
 import java.util.regex.*;
 
 public class OSnakeParser {
-    private static boolean verboseMode = false; // 🔥 Now static for accessibility
+    private static boolean verboseMode = false; 
 
     public static void main(String[] args) {
         System.out.println("oSNAKE Java Runtime Initialized...");
 
-        // 🔥 Fix: Check if any arguments exist
+        
         if (args.length == 0) {
             System.out.println("Error: No script file specified.");
             System.out.println("Usage: java OSnakeParser [-v] <script-file>");
             return;
         }
 
-        // ✅ Check for verbose mode (-v)
+        
         boolean verboseMode = false;
         String scriptFilePath;
         if (args.length > 1 && args[0].equals("-v")) {
             System.out.println("Verbose mode enabled.");
             verboseMode = true;
-            scriptFilePath = args[1]; // Use second argument as the script file
+            scriptFilePath = args[1]; 
         } else {
-            scriptFilePath = args[0]; // Use first argument as the script file
+            scriptFilePath = args[0]; 
         }
 
         File scriptFile = new File(scriptFilePath);
@@ -40,7 +40,7 @@ public class OSnakeParser {
             }
             System.out.println("Executing script: " + scriptFilePath);
             OSnakeParser parser = new OSnakeParser();
-            parser.execute(script.toString(), verboseMode); // ✅ Pass verbose mode
+            parser.execute(script.toString(), verboseMode); 
         } catch (IOException e) {
             System.out.println("Error reading script file: " + e.getMessage());
         }
@@ -54,9 +54,9 @@ public class OSnakeParser {
     }
 
     private void processLine(String line, boolean verboseMode) {
-        if (verboseMode) System.out.println("Processing: " + line); // 🔥 Verbose output!
+        if (verboseMode) System.out.println("Processing: " + line); 
 
-        // Function definitions (e.g., func{testfunc})
+        
         Pattern funcPattern = Pattern.compile("func\\{(\\w+)\\}");
         Matcher funcMatcher = funcPattern.matcher(line);
         if (funcMatcher.find()) {
@@ -65,7 +65,7 @@ public class OSnakeParser {
             return;
         }
 
-        // Data storage (e.g., DATA[x=1])
+        
         Pattern dataPattern = Pattern.compile("DATA\\[x=(\\d+)\\]");
         Matcher dataMatcher = dataPattern.matcher(line);
         if (dataMatcher.find()) {
@@ -74,7 +74,7 @@ public class OSnakeParser {
             return;
         }
 
-        // ✅ Print TOKEN[x] support (prints stored variable)
+        
         Pattern tokenPrintPattern = Pattern.compile("print TOKEN\\[(\\w+)\\]");
         Matcher tokenPrintMatcher = tokenPrintPattern.matcher(line);
         if (tokenPrintMatcher.find()) {
@@ -83,11 +83,11 @@ public class OSnakeParser {
             return;
         }
 
-        // ✅ Standard print statements (e.g., print(This is OSnake!))
+        
         Pattern printPattern = Pattern.compile("print\\s*\\((.*?)\\)");
         Matcher printMatcher = printPattern.matcher(line);
         if (printMatcher.find()) {
-            System.out.println(printMatcher.group(1).trim()); // ✅ Prints exactly what’s inside the brackets
+            System.out.println(printMatcher.group(1).trim()); 
         }
     }
 }
